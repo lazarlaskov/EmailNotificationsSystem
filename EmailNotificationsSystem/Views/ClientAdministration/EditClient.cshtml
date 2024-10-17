@@ -1,0 +1,27 @@
+﻿@model ClientDataModel
+
+@{
+    ViewData["Title"] = "Edit Client";
+}
+
+<div>
+    <a asp-action="Index" class="btn btn-sm btn-secondary mb-2">Back to Clients</a>
+</div>
+
+<h2 class="mb-2">Edit Client</h2>
+
+<form asp-action="EditClient" method="post">
+    <input type="hidden" asp-for="ClientId" />
+    <input type="hidden" asp-for="TemplateId" />
+    <div class="form-group mb-1">
+        <label asp-for="TemplateName"></label>
+        <input asp-for="TemplateName" class="form-control" />
+        <span asp-validation-for="TemplateName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="MarketingData"></label>
+        <textarea asp-for="MarketingData" class="form-control" rows="10"></textarea>
+        <span asp-validation-for="MarketingData" class="text-danger"></span>
+    </div>
+    <input type="submit" value="Save" class="btn btn-primary mt-2" />
+</form>

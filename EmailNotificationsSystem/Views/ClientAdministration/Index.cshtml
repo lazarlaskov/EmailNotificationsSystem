@@ -1,0 +1,29 @@
+﻿@model IEnumerable<EmailNotificationsSystem.Models.ClientModel>
+
+@{
+    ViewData["Title"] = "Clients";
+}
+
+<h2 class="mb-2">Clients</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Client Id</th>
+            <th scope="col">Client Name</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (ClientModel client in Model)
+        {
+            <tr>
+                <td>@client.ClientId</td>
+                <td>@client.ClientName</td>
+                <td>
+                    <a asp-controller="ClientAdministration" asp-action="EditClient" asp-route-clientId="@client.ClientId">Edit</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

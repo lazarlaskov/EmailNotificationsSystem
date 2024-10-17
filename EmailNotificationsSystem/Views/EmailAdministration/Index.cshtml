@@ -1,0 +1,41 @@
+﻿@model EmailConfigurationViewModel
+
+@{
+    ViewData["Title"] = "Email Administration";
+}
+
+<div class="d-flex justify-content-between">
+    <h2 class="mb-2">Email Administration</h2>
+    <form asp-controller="Email" asp-action="MassSend" method="post">
+        <input type="submit" value="Send Mass Emails" class="btn btn-primary mb-2" />
+    </form>
+</div>
+
+<form asp-action="Update" method="post">
+    <div class="form-group mb-1">
+        <label asp-for="ProtocolId"></label>
+        @Html.DropDownListFor(model => model.ProtocolId, Model.Protocols, null, new { @class = "form-control" })
+        <span asp-validation-for="ProtocolId" class="text-danger"></span>
+    </div>
+    <div class="form-group mb-1">
+        <label asp-for="HostName"></label>
+        <input asp-for="HostName" class="form-control" />
+        <span asp-validation-for="HostName" class="text-danger"></span>
+    </div>
+    <div class="form-group mb-1">
+        <label asp-for="Port"></label>
+        <input asp-for="Port" class="form-control" />
+        <span asp-validation-for="Port" class="text-danger"></span>
+    </div>
+    <div class="form-group mb-1">
+        <label asp-for="DefaultSender"></label>
+        <input asp-for="DefaultSender" class="form-control" />
+        <span asp-validation-for="DefaultSender" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="SecurityModeId"></label>
+        @Html.DropDownListFor(model => model.SecurityModeId, Model.SecurityModes, null, new { @class = "form-control" })
+        <span asp-validation-for="SecurityModeId" class="text-danger"></span>
+    </div>
+    <input type="submit" value="Save" class="btn btn-primary mt-2" />
+</form>

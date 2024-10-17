@@ -1,0 +1,31 @@
+﻿@model IEnumerable<EmailTemplateModel>
+
+@{
+    ViewData["Title"] = "Email Templates";
+}
+
+<h2 class="mb-2">Email Templates</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Template Id</th>
+            <th scope="col">Template Name</th>
+            <th scope="col">Template Content</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (EmailTemplateModel template in Model)
+        {
+            <tr>
+                <td>@template.TemplateId</td>
+                <td>@template.TemplateName</td>
+                <td>@template.TemplateContent</td>
+                <td>
+                    <a asp-controller="EmailTemplate" asp-action="EditTemplate" asp-route-templateId="@template.TemplateId">Edit</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

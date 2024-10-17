@@ -1,0 +1,56 @@
+﻿@model List<EmailModel>
+
+@{
+    ViewData["Title"] = "Emails";
+}
+
+<h2 class="mb-4">
+    Emails
+</h2>
+
+<div>
+    <a asp-action="Index" class="btn btn-sm btn-secondary mb-2">Refresh Data</a>
+</div>
+
+<h4 class="mb-2">
+    Processed Emails
+</h4>
+
+<table class="table mb-5">
+    <thead>
+        <tr>
+            <th scope="col">
+                Client Id
+            </th>
+            <th scope="col">
+                Template Id
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (EmailModel email in Model)
+        {
+            <tr>
+                <td>
+                    @email.ClientId
+                </td>
+                <td>
+                    @email.TemplateId
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<h3 class="mb-2">
+    Simulate Sending of Emails
+</h3>
+
+<form asp-action="Send" method="post">
+    <input type="submit" value="Send Email" class="btn btn-primary mb-2" />
+</form>
+
+<form asp-action="SendMultiple" method="post">
+    <input type="submit" value="Send Multiple Emails" class="btn btn-primary mb-2" />
+</form>
+
